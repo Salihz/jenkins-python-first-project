@@ -1,1 +1,1 @@
-print('Hello World from Jenkins Pipeline with Webhook Trigger')
+print('Hello World from Jenkins Pipeline')
