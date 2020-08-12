@@ -1,16 +1,11 @@
 pipeline {
-    agent { label 'master' }
+    agent { any { image 'python:alpine' } }
     stages {
-        stage('build') {
-            steps {
-                echo 'Compiling the java source code'
-                sh 'javac Hello.java'
-            }
-        }
         stage('run') {
             steps {
-                echo 'Running the compiled java code.'
-                sh 'java Hello'
+                echo 'Clarusway_Way to Reinvent Yourself'
+                sh 'python -version'
+                sh 'python pipeline.py'
             }
         }
     }
