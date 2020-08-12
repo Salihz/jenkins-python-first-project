@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn -B -DskipTests -f hell-app/pom.xml clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn -f hell-app/pom.xml test'
             }
             post {
                 always {
