@@ -23,7 +23,8 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'sudo ./hello-app/deliver-script.sh'
+                sh 'chmod +x hello-app/deliver-script.sh'
+                sh './hello-app/deliver-script.sh'
             }
         }
     }
