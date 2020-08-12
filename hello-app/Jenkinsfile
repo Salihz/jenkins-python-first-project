@@ -1,10 +1,29 @@
 pipeline {
-    agent { any { image 'python:alpine' } }
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
     stages {
-        stage('run') {
+        stage('Build') {
             steps {
-                echo 'Clarusway_Way to Reinvent Yourself'
-                sh 'python --version'
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh './deliver-script.sh'
             }
         }
     }
