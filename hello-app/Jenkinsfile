@@ -1,16 +1,11 @@
 pipeline {
-    agent {
-        any {
-            image 'maven:3-openjdk-8'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    agent { any { image 'python:alpine' } }
     stages {
-        stage('Build') {
+        stage('run') {
             steps {
-                sh 'mvn --version'
+                echo 'Clarusway_Way to Reinvent Yourself'
+                sh 'python -version'
             }
         }
-        
     }
 }
