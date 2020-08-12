@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 echo 'Clarusway_Way to Reinvent Yourself'
-                sh 'echo Jenkins Pipeline with GitHub Webhook'
+                sh 'python3 hello-world.py'
             }
         }
     }
