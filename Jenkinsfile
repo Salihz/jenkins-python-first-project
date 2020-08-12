@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'master' { image 'python:alpine' } }
+    agent { any { image 'python:alpine' } }
     stages {
         stage('build') {
             steps {
